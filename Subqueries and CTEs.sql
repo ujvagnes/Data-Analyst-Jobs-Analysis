@@ -1,5 +1,5 @@
 -- SUBQUERY 
-
+/*
 SELECT 
     company_id,
     name AS company_name
@@ -12,6 +12,7 @@ where company_id IN (
     WHERE
         job_no_degree_mention = TRUE
 )
+*/
 
 -- CTE: using WITH ... AS () ... 
 
@@ -54,24 +55,7 @@ LEFT JOIN company_job_count ON company_job_count.company_id = company_dim.compan
 
 
 
-
-CASE
-        WHEN COUNT(job_id) BETWEEN 0 AND 9 THEN 'Small'
-        WHEN COUNT(job_id) BETWEEN 10 AND 50 THEN 'Medium'
-        ELSE 'Large'
-    END AS company_size
-
-
-
-
-
-
-
-
-
-
-
-
+/*
 
 
 SELECT
@@ -84,7 +68,7 @@ WHERE COUNT(job_id) IN (
         WHEN COUNT(job_id) BETWEEN 10 AND 50 THEN 'Medium'
         ELSE 'Large'
     END AS company_size
-FROM job_postings_fact)
+FROM job_postings_fact) */
 
 
 
