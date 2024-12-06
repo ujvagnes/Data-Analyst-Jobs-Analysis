@@ -1,0 +1,69 @@
+WITH company_job_count AS (
+SELECT
+company_id,
+COUNT(*) as total_jobs
+FROM
+job_postings_fact
+WHERE
+job_title_short = 'Data Analyst'
+GROUP BY
+    company_id)
+
+
+SELECT 
+    -- subquery.job_id,
+    -- job_title_short,
+    -- subquery.company_name,
+    -- subquery.total_jobs,
+    CASE
+        WHEN subquery.total_jobs BETWEEN 0 AND 9 THEN 'Small'
+        WHEN subquery.total_jobs BETWEEN 10 AND 50 THEN 'Medium'
+        ELSE 'Large'
+    END AS company_size,
+    ROUND((subquery.salary_year_avg / 12), 0) AS salary_month_avg_$
+FROM (
+SELECT 
+    company_dim.name as company_name,
+    company_job_count.total_jobs,
+    job_postings_fact.job_title_short,
+    job_postings_fact.salary_year_avg,
+    job_postings_fact.job_posted_date,
+    job_postings_fact.job_id
+FROM 
+    company_dim
+LEFT JOIN company_job_count ON company_job_count.company_id = company_dim.company_id
+LEFT JOIN job_postings_fact ON job_postings_fact.company_id = company_dim.company_id
+WHERE
+    (EXTRACT(MONTH FROM job_postings_fact.job_posted_date) BETWEEN 1 AND 3) AND
+    (job_postings_fact.salary_year_avg IS NOT NULL) AND
+    (job_postings_fact.salary_year_avg > 70000) AND
+    job_postings_fact.job_title_short = 'Data Analyst'
+    ) AS subquery
+ORDER BY 
+salary_month_avg_$;
+
+
+
+/*
+
+Job postings from 
+- the 1st quarter
+- that have a salary greater than $70K.
+
+*/
+
+SELECT 
+    job_title_short,
+    job_location,
+    company.name AS company_name,
+    ROUND((salary_year_avg / 12), 0) AS salary_month_avg_$
+    FROM job_postings_fact AS job_postings
+    LEFT JOIN company_dim AS company ON company.company_id = job_postings.company_id
+    WHERE 
+    (EXTRACT(MONTH FROM job_posted_date) BETWEEN 1 AND 3) AND
+    (salary_year_avg IS NOT NULL) AND
+    (salary_year_avg > 70000) AND
+    job_title_short = 'Data Analyst'
+    ORDER BY 
+    salary_month_avg_$ DESC
+    ;
