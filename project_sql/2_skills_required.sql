@@ -1,11 +1,8 @@
 
 SELECT 
-     --top_paying_jobs.job_id,
-   --  top_paying_jobs.job_title_short,
-    -- top_paying_jobs.salary_year_avg,
      COUNT(*) as nr_job_demanding_skills,
      skills_dim.skills,
-     AVG(top_paying_jobs.salary_year_avg)
+     ROUND(AVG(top_paying_jobs.salary_year_avg), 0) as salary_y_avg
 FROM 
     (
     SELECT 
@@ -31,7 +28,7 @@ WHERE
 GROUP BY 
     skills_dim.skills
 ORDER BY
-    AVG(top_paying_jobs.salary_year_avg) DESC;
+    nr_job_demanding_skills DESC;
 
 
 /*

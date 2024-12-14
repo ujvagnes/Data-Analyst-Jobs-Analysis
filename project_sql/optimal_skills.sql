@@ -1,6 +1,3 @@
-/*- high demand AND high salary jobs
-  - remote, specified salary
-  - Why? */
 /*
 
 WITH skills_demand AS (

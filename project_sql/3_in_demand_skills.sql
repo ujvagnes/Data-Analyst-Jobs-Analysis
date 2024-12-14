@@ -9,9 +9,8 @@ WHERE
     job_postings_fact.job_title_short = 'Data Analyst' AND
     job_postings_fact.job_work_from_home = true
 GROUP BY
-    skills_dim.skills,
-    job_postings_fact.job_work_from_home
+    skills_dim.skills
 ORDER BY
     demand_count DESC
 LIMIT 
-    5
+    5;
