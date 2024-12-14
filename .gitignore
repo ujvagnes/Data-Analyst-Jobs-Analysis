@@ -1,7 +1,7 @@
 /.vscode
 .cases.sql
 .case_expressions.sql
-/csv_files/*
+/csv_files
 .Practice Problem 7.sql
 .Practice Problem 8.sql
 .Subqueries and CTEs.sql
