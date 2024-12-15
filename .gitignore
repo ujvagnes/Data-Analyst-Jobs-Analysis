@@ -1,5 +1,8 @@
 /.DS_store
 /.vscode
+project_sql/skills_required_lukeversion.sql
+project_sql/top_paying_skills_hun.sql
+project_sql/*.csv
 .cases.sql
 .case_expressions.sql
 .Practice Problem 7.sql
