@@ -5,12 +5,9 @@ I have followed an excellent [SQL course](https://lukebarousse.com/sql) by Luke 
 
 # Tools I Used
 
-I have set up my local server in **PGAdmin**, created the tables and written the necessary SQL queries in **VS Code**. 
+I have set up my local server in **PGAdmin**, created the tables and written the necessary SQL queries in **VS Code**.
 
-### Check them out here:
-
-I have opted for **Tableau** to visualise the results, you can check that on 
-### my Tableau Public profile: 
+I have opted for **Tableau** to visualise the results, you can check that on [my Tableau profile](https://public.tableau.com/app/profile/agnes.ujvari/viz/DataAnalystJobListings-PracticeProject/AnalysisofDataAnalystJobListings?publish=yes)
  
  For version control and sharing my scripts, I used **Git** and **Github**.
 
